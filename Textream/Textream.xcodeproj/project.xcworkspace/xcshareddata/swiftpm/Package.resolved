@@ -1,0 +1,24 @@
+{
+  "originHash" : "61e085495d3ee581169cef8eef1b23fa83ee5406f15681de0bb6f3870d37e5d7",
+  "pins" : [
+    {
+      "identity" : "cucumberswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cucumberswift/CucumberSwift.git",
+      "state" : {
+        "revision" : "8be6a9ff01f47b9b4ff61607256ce84d36ee92f2",
+        "version" : "6.8.1"
+      }
+    },
+    {
+      "identity" : "cucumberswiftexpressions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cucumberswift/CucumberSwiftExpressions.git",
+      "state" : {
+        "revision" : "ab4c6482d3230d24a13814a961b6fff1d50f830f",
+        "version" : "1.4.2"
+      }
+    }
+  ],
+  "version" : 3
+}

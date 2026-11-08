@@ -10,6 +10,16 @@ import Combine
 import SwiftUI
 import UniformTypeIdentifiers
 
+protocol RecentDocumentRegistering {
+    func register(_ url: URL)
+}
+
+struct SystemRecentDocumentRegisterer: RecentDocumentRegistering {
+    func register(_ url: URL) {
+        NSDocumentController.shared.noteNewRecentDocumentURL(url)
+    }
+}
+
 class TextreamService: NSObject, ObservableObject {
     static let shared = TextreamService()
     private static let lastDocumentURLDefaultsKey = "lastDocumentURL"
@@ -17,6 +27,7 @@ class TextreamService: NSObject, ObservableObject {
     let externalDisplayController = ExternalDisplayController()
     let browserServer = BrowserServer()
     let directorServer = DirectorServer()
+    private let recentDocumentRegisterer: RecentDocumentRegistering
     var onOverlayDismissed: (() -> Void)?
     var launchedExternally = false
     @Published var directorIsReading = false
@@ -24,6 +35,11 @@ class TextreamService: NSObject, ObservableObject {
     @Published var pages: [String] = [""]
     @Published var currentPageIndex: Int = 0
     @Published var readPages: Set<Int> = []
+
+    init(recentDocumentRegisterer: RecentDocumentRegistering = SystemRecentDocumentRegisterer()) {
+        self.recentDocumentRegisterer = recentDocumentRegisterer
+        super.init()
+    }
 
     var hasNextPage: Bool {
         for i in (currentPageIndex + 1)..<pages.count {
@@ -225,7 +241,7 @@ class TextreamService: NSObject, ObservableObject {
             currentFileURL = url
             savedPages = pages
             rememberDocumentURL(url)
-            NSDocumentController.shared.noteNewRecentDocumentURL(url)
+            recentDocumentRegisterer.register(url)
         } catch {
             let alert = NSAlert()
             alert.messageText = "Failed to save file"
@@ -328,7 +344,7 @@ class TextreamService: NSObject, ObservableObject {
             readPages.removeAll()
             currentFileURL = url
             rememberDocumentURL(url)
-            NSDocumentController.shared.noteNewRecentDocumentURL(url)
+            recentDocumentRegisterer.register(url)
         } catch {
             let alert = NSAlert()
             alert.messageText = "Failed to open file"

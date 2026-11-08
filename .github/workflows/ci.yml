@@ -1,0 +1,71 @@
+name: Acceptance Checks
+
+on:
+  pull_request:
+    paths:
+      - ".github/**"
+      - "Textream/**"
+      - "features/**"
+      - "test/**"
+      - "skills/**"
+      - "**/*.swift"
+  push:
+    branches:
+      - master
+    paths:
+      - ".github/**"
+      - "Textream/**"
+      - "features/**"
+      - "test/**"
+      - "skills/**"
+      - "**/*.swift"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: acceptance-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release-acceptance:
+    name: macOS release acceptance
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check release acceptance criteria
+        run: ruby test/release_pipeline_test.rb
+
+  macos-tests:
+    name: macOS app acceptance tests
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run macOS acceptance suite
+        run: |
+          xcodebuild test \
+            -project Textream/Textream.xcodeproj \
+            -scheme Textream \
+            -destination 'platform=macOS' \
+            -derivedDataPath "$RUNNER_TEMP/DerivedData" \
+            -parallel-testing-enabled NO \
+            CODE_SIGNING_ALLOWED=NO
+
+  ios-tests:
+    name: iOS app tests
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_26.0.app/Contents/Developer
+      - name: Run iOS test suite
+        run: |
+          DEVICE_ID="$(xcrun simctl list devices available --json | ruby -rjson -e 'devices = JSON.parse(STDIN.read)["devices"].values.flatten; puts devices.find { |device| device["name"].include?("iPhone") && device["isAvailable"] }&.fetch("udid")')"
+          test -n "$DEVICE_ID"
+          xcodebuild test \
+            -project Textream/Textream.xcodeproj \
+            -scheme TextreamiOS \
+            -destination "platform=iOS Simulator,id=$DEVICE_ID" \
+            -derivedDataPath "$RUNNER_TEMP/DerivedData" \
+            -parallel-testing-enabled NO \
+            CODE_SIGNING_ALLOWED=NO

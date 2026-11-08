@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B10000000000000000000001 /* CucumberSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B10000000000000000000005 /* CucumberSwift */; };
+		B10000000000000000000002 /* iOS acceptance features in Resources */ = {isa = PBXBuildFile; fileRef = B10000000000000000000003 /* iOS acceptance features */; };
+		C10000000000000000000004 /* CucumberSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C10000000000000000000015 /* CucumberSwift */; };
+		C10000000000000000000005 /* macOS acceptance features in Resources */ = {isa = PBXBuildFile; fileRef = C10000000000000000000003 /* macOS acceptance features */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A10000000000000000000015 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -20,6 +27,9 @@
 		446966B42F37E47300AF141F /* Textream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Textream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A10000000000000000000001 /* TextreamiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TextreamiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A10000000000000000000002 /* TextreamiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextreamiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C10000000000000000000002 /* TextreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10000000000000000000003 /* iOS acceptance features */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TestFeatures/iOS/Features; sourceTree = SOURCE_ROOT; };
+		C10000000000000000000003 /* macOS acceptance features */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TestFeatures/macOS/Features; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -36,6 +46,11 @@
 		A10000000000000000000004 /* TextreamiOSTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TextreamiOSTests;
+			sourceTree = "<group>";
+		};
+		C10000000000000000000017 /* TextreamTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TextreamTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -59,6 +74,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B10000000000000000000001 /* CucumberSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C10000000000000000000006 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C10000000000000000000004 /* CucumberSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +95,9 @@
 				446966B62F37E47300AF141F /* Textream */,
 				A10000000000000000000003 /* TextreamiOS */,
 				A10000000000000000000004 /* TextreamiOSTests */,
+				B10000000000000000000003 /* iOS acceptance features */,
+				C10000000000000000000003 /* macOS acceptance features */,
+				C10000000000000000000017 /* TextreamTests */,
 				446966B52F37E47300AF141F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,6 +108,7 @@
 				446966B42F37E47300AF141F /* Textream.app */,
 				A10000000000000000000001 /* TextreamiOS.app */,
 				A10000000000000000000002 /* TextreamiOSTests.xctest */,
+				C10000000000000000000002 /* TextreamTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -150,9 +178,34 @@
 			);
 			name = TextreamiOSTests;
 			packageProductDependencies = (
+				B10000000000000000000005 /* CucumberSwift */,
 			);
 			productName = TextreamiOSTests;
 			productReference = A10000000000000000000002 /* TextreamiOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C10000000000000000000009 /* TextreamTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C10000000000000000000011 /* Build configuration list for PBXNativeTarget "TextreamTests" */;
+			buildPhases = (
+				C10000000000000000000008 /* Sources */,
+				C10000000000000000000006 /* Frameworks */,
+				C10000000000000000000007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C10000000000000000000010 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				C10000000000000000000017 /* TextreamTests */,
+			);
+			name = TextreamTests;
+			packageProductDependencies = (
+				C10000000000000000000015 /* CucumberSwift */,
+			);
+			productName = TextreamTests;
+			productReference = C10000000000000000000002 /* TextreamTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -175,6 +228,10 @@
 						CreatedOnToolsVersion = 26.5;
 						TestTargetID = A1000000000000000000000B;
 					};
+					C10000000000000000000009 = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = 446966B32F37E47300AF141F;
+					};
 				};
 			};
 			buildConfigurationList = 446966AF2F37E47300AF141F /* Build configuration list for PBXProject "Textream" */;
@@ -194,7 +251,9 @@
 				446966B32F37E47300AF141F /* Textream */,
 				A1000000000000000000000B /* TextreamiOS */,
 				A1000000000000000000000C /* TextreamiOSTests */,
+				C10000000000000000000009 /* TextreamTests */,
 			);
+			packageReferences = (B10000000000000000000004 /* XCRemoteSwiftPackageReference "CucumberSwift" */,);
 		};
 /* End PBXProject section */
 
@@ -217,6 +276,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B10000000000000000000002 /* iOS acceptance features in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C10000000000000000000007 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C10000000000000000000005 /* macOS acceptance features in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +312,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C10000000000000000000008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -251,6 +326,18 @@
 			isa = PBXTargetDependency;
 			target = A1000000000000000000000B /* TextreamiOS */;
 			targetProxy = A10000000000000000000015 /* PBXContainerItemProxy */;
+		};
+		C10000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 446966AC2F37E47300AF141F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 446966B32F37E47300AF141F;
+			remoteInfo = Textream;
+		};
+		C10000000000000000000010 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 446966B32F37E47300AF141F /* Textream */;
+			targetProxy = C10000000000000000000001 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -763,6 +850,75 @@
 			};
 			name = AppStore;
 		};
+		C10000000000000000000012 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fka.textream.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Textream.app/Contents/MacOS/Textream";
+				TEST_TARGET_NAME = Textream;
+			};
+			name = Debug;
+		};
+		C10000000000000000000013 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fka.textream.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Textream.app/Contents/MacOS/Textream";
+				TEST_TARGET_NAME = Textream;
+			};
+			name = Release;
+		};
+		C10000000000000000000014 /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.fka.textream.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Textream.app/Contents/MacOS/Textream";
+				TEST_TARGET_NAME = Textream;
+			};
+			name = AppStore;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -806,7 +962,41 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		C10000000000000000000011 /* Build configuration list for PBXNativeTarget "TextreamTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C10000000000000000000012 /* Debug */,
+				C10000000000000000000013 /* Release */,
+				C10000000000000000000014 /* AppStore */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B10000000000000000000004 /* XCRemoteSwiftPackageReference "CucumberSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cucumberswift/CucumberSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B10000000000000000000005 /* CucumberSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B10000000000000000000004 /* XCRemoteSwiftPackageReference "CucumberSwift" */;
+			productName = CucumberSwift;
+		};
+		C10000000000000000000015 /* CucumberSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B10000000000000000000004 /* XCRemoteSwiftPackageReference "CucumberSwift" */;
+			productName = CucumberSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 446966AC2F37E47300AF141F /* Project object */;
 }
